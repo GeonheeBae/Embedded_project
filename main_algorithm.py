@@ -240,7 +240,7 @@ stop_start_time = 0
 stop_add_time = 10
 
 # 횡단보도 task 경험 유무, 횡단보도 인지하지 않는 시간 (10s)가 지날 시 0으로 초기화
-stop_expiernce = 0
+stop_experience = 0
 
 last_stop_time = 0
 
@@ -290,8 +290,8 @@ while running:
                     last_mode_time = current_time
             if score >= 0.45 and height >= 70:
                 # crosswalk task == stop mode / 직전 모드가 stop mode 가 아니고, stop 경험이 최근에 없을 시
-                if cls_name == "crosswalk" and mode_name != "stop" and stop_expiernce != 1:
-                    stop_expiernce = 1
+                if cls_name == "crosswalk" and mode_name != "stop" and stop_experience != 1:
+                    stop_experience = 1
                     mode_name = "stop" 
                     last_mode_time = current_time
                     stop_start_time = current_time
@@ -320,7 +320,7 @@ while running:
     
     # 횡단보도 인지하지 않는 시간 (10s)가 지날 시 0으로 초기화
     if current_time - stop_start_time >= stop_mode_time + stop_add_time:
-        stop_expiernce = 0
+        stop_experience = 0
     
     # 공통적으로 if current_time - last_mode_time >= slow_mode_time: 문을 통해 각 task의 시간이 지나면 모드 해제
     # slow 모드일 시, throttle 감소 & normal_tracking 모드로 동작
