@@ -1,5 +1,3 @@
-Hi there!
-
 Embedded System ECL3003-10252
 Group #8
 
